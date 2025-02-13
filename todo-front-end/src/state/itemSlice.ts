@@ -5,7 +5,7 @@ export interface TodoItemType {
     title: string;
     content: string;
     isCompleted: boolean;
-    isFailed: boolean;
+ 
 }
 
 export interface TodoState {
@@ -55,7 +55,7 @@ export const fetchTodoItems = createAsyncThunk(
 
 export const deleteTodoItem = createAsyncThunk(
     'todoItems/delete',
-    async (id: string, { dispatch }) => {
+    async (id: number, { dispatch }) => {
         try {
             await fetch(`http://localhost:3000/items/${id}`, {
                 method: 'DELETE',
@@ -103,6 +103,45 @@ export const editTodoItem = createAsyncThunk(
             return data;
         } catch (error) {
             throw Error(`Failed to edit item: ${error}`);
+        }
+    }
+);
+export const markItemCompleted = createAsyncThunk(
+    'todoItems/markCompleted',
+    async (id: number, { dispatch }) => {
+        try {
+            const response = await fetch(`http://localhost:3000/items/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ isCompleted: true }),
+            });
+            const data: TodoItemType = await response.json();
+            dispatch(fetchTodoItems());
+            return data;
+        } catch (error) {
+            throw Error(`Failed to mark item as completed: ${error}`);
+        }
+    }
+);
+
+export const markItemUnCompleted = createAsyncThunk(
+    'todoItems/markCompleted',
+    async (id: number, { dispatch }) => {
+        try {
+            const response = await fetch(`http://localhost:3000/items/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ isCompleted: false }),
+            });
+            const data: TodoItemType = await response.json();
+            dispatch(fetchTodoItems());
+            return data;
+        } catch (error) {
+            throw Error(`Failed to mark item as completed: ${error}`);
         }
     }
 );

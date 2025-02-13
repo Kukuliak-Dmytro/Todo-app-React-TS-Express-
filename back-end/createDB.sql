@@ -6,6 +6,7 @@ create table todoItems(
     title varchar(255) not null,
     content text not null,
     isCompleted boolean not null default false,
+    -- even though I wrote tis last value, I DID not use it in the app
     isFailed boolean not null default false
 );
 

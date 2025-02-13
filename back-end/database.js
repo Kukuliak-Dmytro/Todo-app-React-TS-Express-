@@ -37,10 +37,10 @@ async function addItem(item){
 async function updateItem(id, item){
     const oldItem= await getItemById(id)
     const newItem={
-        title: item.title || oldItem.title,
-        content: item.content || oldItem.content,
-        isCompleted: item.isCompleted || oldItem.isCompleted,
-        isFailed: item.isFailed || oldItem.isFailed,
+        title: item.title ?? oldItem.title,
+        content: item.content ?? oldItem.content,
+        isCompleted: item.isCompleted ?? oldItem.isCompleted,
+        isFailed: item.isFailed ?? oldItem.isFailed,
     }
     //prevent SQL injection
     await dbPool.query(`update 
