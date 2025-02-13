@@ -1,0 +1,27 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.app-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  background-image: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  margin-bottom: 100px;
+}
+.app-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+  background-color: rgba(128, 128, 128, 0.2);
+
+}
