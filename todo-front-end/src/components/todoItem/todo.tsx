@@ -1,4 +1,5 @@
 import {TodoItemType}  from "../../state/itemSlice"
+import "./todo.css"
 interface props{
     item:TodoItemType
 }

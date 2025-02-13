@@ -18,8 +18,7 @@
 .app-list{
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding-top: 100px;
   width: 100vw;
   height: 80vh;
   background-color: rgba(128, 128, 128, 0.2);
