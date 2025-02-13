@@ -59,7 +59,7 @@ export default function Todo({ item }: Props) {
                 </>
             ) : (
                 <>
-                    <p className="todo-title">{title}</p>
+                    <h4 className="todo-title">{title}</h4>
                     <p className="todo-content">{content}</p>
                 </>
             )}
