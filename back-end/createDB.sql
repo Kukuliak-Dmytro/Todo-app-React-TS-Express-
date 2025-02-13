@@ -1,4 +1,4 @@
-create databse todoApp;
+create database todoApp;
 use todoApp;
 
 create table todoItems(
@@ -7,6 +7,6 @@ create table todoItems(
     content text not null,
     isCompleted boolean not null default false,
     isFailed boolean not null default false
-)
+);
 
 insert into todoItems(title, content) values('Test Task', 'This is the test task');
