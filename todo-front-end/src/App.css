@@ -13,14 +13,13 @@
   height: 10vh;
   background-image: linear-gradient(to right, #ff416c, #ff4b2b);
   color: white;
-  margin-bottom: 100px;
 }
 .app-list{
   display: flex;
   justify-content: center;
   padding-top: 100px;
   width: 100vw;
-  height: 80vh;
+  height:90vh;
   background-color: rgba(128, 128, 128, 0.2);
 
 }

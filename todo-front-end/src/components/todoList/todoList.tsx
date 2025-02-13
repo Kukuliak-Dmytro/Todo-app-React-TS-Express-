@@ -10,7 +10,7 @@ export default function TodoList() {
     const loading = useSelector((state: RootState) => state.todoItemsStore.status);
     const dispatch = useDispatch<AppDispatch>();
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
+    const itemsPerPage = 5;
 
     useEffect(() => {
         // simulation loading
@@ -51,12 +51,12 @@ export default function TodoList() {
     else    return (
         <div className="list-wrapper">
             <div className="items-wrapper">
-                <form action="" className='form' onSubmit={ (e) => handleSubmit(e,)}>
+                <form action="" id='add-item' onSubmit={ (e) => handleSubmit(e,)}>
                     <input type="text" name="title" id=" title" placeholder='Enter task title' required />
                     <input type="text" name="content" id="content" placeholder='Enter task content'  required/>
                     <button type='submit'> Add</button>
                 </form>
-                Id - Title - Content - Completed - Failed
+            
                 {currentItems.length > 0 && currentItems.map((item, index) => (
                     <Todo key={index} item={item} />
                 ))}

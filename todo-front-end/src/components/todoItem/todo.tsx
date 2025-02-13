@@ -14,8 +14,6 @@ export default function Todo({ item }: Props) {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(item.title);
     const [content, setContent] = useState(item.content);
-    const [isCompleted, setIsCompleted] = useState(item.isCompleted);
-
     const handleEdit = () => {
         setIsEditing(!isEditing);
         if (isEditing) {
@@ -37,19 +35,24 @@ export default function Todo({ item }: Props) {
 
     return (
         <div className="todo-item-wrapper">
-            <input type="checkbox" name="" id="" checked={item.isCompleted}
-                onChange={() => handleCheckbox()}
-            />
-            <p>{item.id}</p>
+            <span className='status'>
+                <input type="checkbox" checked={item.isCompleted} onChange={() => handleCheckbox()} id={`id-${item.id}`} />
+                <label className="todo-status" htmlFor={`id-${item.id}`}>
+                    {item.isCompleted ? 'Completed' : 'In progress...'}
+                </label>
+            </span>
+
             {isEditing ? (
                 <>
                     <input
+                        className="todo-title-form"
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <input
-                        type="text"
+                    <textarea
+                        className="todo-content-form"
+
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     />
@@ -60,14 +63,9 @@ export default function Todo({ item }: Props) {
                     <p className="todo-content">{content}</p>
                 </>
             )}
-            <div className="todo-status">
-                <span className={`status ${item.isCompleted ? 'completed' : 'pending'}`}>
-                    {item.isCompleted ? 'Completed' : 'Pending'}
-                </span>
-            </div>
             <div className="todo-actions">
-                <button className="btn" onClick={() => handleEdit()}>{!isEditing ? 'Edit' : 'Save'}</button>
-                <button className="btn" onClick={handleDelete}>Delete</button>
+                <button className="btn secondary" onClick={() => handleEdit()}>{!isEditing ? 'Edit' : 'Save'}</button>
+                <button className="btn danger" onClick={handleDelete}>Delete</button>
             </div>
         </div>
     );
