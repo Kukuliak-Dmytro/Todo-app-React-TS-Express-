@@ -1,19 +1,23 @@
+import React, { useEffect, useState } from 'react';
+import Todo from "../todoItem/todo";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState,AppDispatch } from '../../state/store';
+import { fetchTodoItems } from '../../state/itemSlice';
 
-import Todo from "../todoItem/todo"
-import { TodoItemType } from '../../types/todo'
-async function getItems(): Promise<TodoItemType[]> {
-    const response = await fetch('http://localhost:3000/items');
-    const data = await response.json();
-    console.log(data);
-    return data;
-}
+
 export default function TodoList() {
-    const myItems:TodoItemType[] =  getItems()
+    const myItems=useSelector((state:RootState)=>state.todoItemsStore.todoItems)
+    const dispatch=useDispatch<AppDispatch>()
+    useEffect(()=>{dispatch(fetchTodoItems())},[])
     return (
         <div className="list-wrapper">
-            <Todo item={myItems[1]}></Todo>
-            <Todo item={myItems[2]}></Todo>
-            <Todo item={myItems[3]}></Todo> 
-            </div>
-    )
+            {myItems.length > 0 && (
+                <>
+                    <Todo item={myItems[0]} />
+                    <Todo item={myItems[1]} />
+                    <Todo item={myItems[2]} />
+                </>
+            )}
+        </div>
+    );
 }

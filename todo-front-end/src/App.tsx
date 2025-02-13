@@ -1,4 +1,4 @@
-import Todo from './components/todoItem/todo'
+import TodoList from './components/todoList/todoList'
 import './App.css'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     </div>
 
       <div className="app-list">
-       
+        <TodoList></TodoList>
       </div> 
     </>
   )

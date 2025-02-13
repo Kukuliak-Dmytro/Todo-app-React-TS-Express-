@@ -1,4 +1,4 @@
-import { TodoItemType } from "../../types/todo"
+import {TodoItemType}  from "../../state/itemSlice"
 interface props{
     item:TodoItemType
 }
