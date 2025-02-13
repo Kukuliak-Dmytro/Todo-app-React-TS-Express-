@@ -18,14 +18,12 @@ async function getItems(){
     const [rows]= await dbPool.query(`select * from todoItems`)
     return rows
 }
-// console.log(await getItems())
 
 async function getItemById(id){
     // prevent SQL injection
     const [rows]= await dbPool.query(`select * from todoItems where id=?`, [id])
     return rows[0]
 }
-// console.log(await getItemById(1))
 
 async function addItem(item){
     //prevent SQL injection
@@ -35,7 +33,6 @@ async function addItem(item){
     // so you need to query the item back
     return (await getItemById (result.insertId))
 }
-// console.log(await addItem({title:`Test creation`, content:'Test the creation of a new item'}) )
 
 async function updateItem(id, item){
     const oldItem= await getItemById(id)
@@ -54,16 +51,12 @@ async function updateItem(id, item){
     return (await getItemById(id))
 }
 
-// console.log(await updateItem(2, {title: `Test update`, isCompleted: true}))
-
 async function deleteItem(id){
     const item= await getItemById(id)
     //prevent SQL injection
     await dbPool.query(`delete from todoItems where id=?`, [id])
     return item
 }
-// console.log(await deleteItem(5))
 
-console.log(await getItems())
 
 export {getItems, getItemById, addItem, updateItem, deleteItem}

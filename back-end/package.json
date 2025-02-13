@@ -6,8 +6,10 @@
   "dependencies": {
     "aws-ssl-profiles": "^1.1.2",
     "back-end": "file:",
+    "cors": "^2.8.5",
     "denque": "^2.1.0",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "generate-function": "^2.3.1",
     "iconv-lite": "^0.6.3",
     "is-property": "^1.0.2",
